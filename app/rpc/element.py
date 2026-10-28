@@ -2,7 +2,7 @@ from asyncio import TaskGroup
 from typing import override
 
 from connectrpc.request import RequestContext
-from psycopg.sql import SQL, Identifier
+from psycopg.sql import SQL
 from shapely import get_coordinates
 
 from app.config import (
@@ -129,7 +129,7 @@ class _Service(Service):
             Element,
             pagination,
             select=SQL('*'),
-            from_=Identifier('element'),
+            from_=t'{"element":i}',
             where=t'typed_id = {tid}',
             cursor_key='sequence_id',
             id_key='version',
