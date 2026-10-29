@@ -18,7 +18,10 @@ async def _upload(
         + '</trkseg>'
         for segment in segments
     )
-    content = f'<gpx version="1.1" creator="tests"><trk>{tracks}</trk></gpx>'.encode()
+    content = (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        f'<gpx version="1.1" creator="tests"><trk>{tracks}</trk></gpx>'
+    ).encode()
     client.headers['Authorization'] = 'User user1'
     response = await client.post(
         '/api/0.6/gpx/create',
