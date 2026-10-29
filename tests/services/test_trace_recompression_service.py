@@ -15,6 +15,7 @@ from app.services import trace_recompression_service as module
 from app.services.trace_recompression_service import TraceRecompressionService
 
 _GPX = (
+    b'<?xml version="1.0" encoding="UTF-8"?>\n'
     b'<gpx version="1.1" creator="tests"><trk><trkseg>'
     b'<trkpt lat="10" lon="20"/><trkpt lat="11" lon="21"/>'
     b'</trkseg></trk><!--' + b'recompression regression ' * 1000 + b'--></gpx>'
